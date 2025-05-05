@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment Success</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #00c9ff, #92fe9d);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      flex-direction: column;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blast-message {
+      font-size: 2.5rem;
+      font-weight: bold;
+      background: white;
+      color: #28a745;
+      padding: 10px 25px;
+      border-radius: 50px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+      position: absolute;
+      top: 20%;
+      opacity: 0;
+      animation: blastUp 0.8s ease-out forwards;
+      z-index: 1000;
+    }
+
+    @keyframes blastUp {
+      0% {
+        transform: scale(0.5) translateY(50px);
+        opacity: 0;
+      }
+      60% {
+        transform: scale(1.1) translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1) translateY(-10px);
+        opacity: 1;
+      }
+    }
+
+    .confetti {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background-color: #fff;
+      opacity: 0;
+      border-radius: 50%;
+      animation: confettiBlast 1.2s ease-out forwards;
+    }
+
+    @keyframes confettiBlast {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--x), var(--y)) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      z-index: 10;
+    }
+
+    p {
+      font-size: 1.2rem;
+      z-index: 10;
+    }
+
+    .back-btn {
+      margin-top: 30px;
+      padding: 10px 20px;
+      background: #fff;
+      color: #333;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .back-btn:hover {
+      background: #f1f1f1;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Blast Message -->
+  <div class="blast-message">✅ Order Confirmed!</div>
+
+  <!-- Confetti -->
+  <script>
+    const colors = ["#ff4d4d", "#ffd633", "#66ff66", "#66d9ff", "#ff66cc"];
+    for (let i = 0; i < 25; i++) {
+      const confetti = document.createElement("div");
+      confetti.classList.add("confetti");
+      const x = (Math.random() - 0.5) * 300 + "px";
+      const y = (Math.random() - 0.5) * 300 + "px";
+      confetti.style.setProperty("--x", x);
+      confetti.style.setProperty("--y", y);
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.left = "50%";
+      confetti.style.top = "25%";
+      document.body.appendChild(confetti);
+    }
+  </script>
+
+  <h1>🎉 Payment Successful!</h1>
+  <p>Thank you for your purchase. Hope to see you again soon!</p>
+  <button class="back-btn" onclick="window.location.href='index.html'">Go to Home</button>
+
+</body>
+</html>

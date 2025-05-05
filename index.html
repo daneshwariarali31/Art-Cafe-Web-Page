@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Canvas & Coffee offers a relaxing environment with coffee, sandwiches, and desserts. Visit us today!">
+  <meta name="keywords" content="coffee, sandwiches, pastries, cafe, menu, gallery, reserve, Canvas & Coffee">
+  <meta name="author" content="Canvas & Coffee">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | Art Cafe </title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+ 
+
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #f8f9fa, #fff);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    h1, h2 {
+      font-weight: 700;
+    }
+
+    .feature-card:hover {
+      transform: scale(1.03);
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .top-card .card {
+      border: none;
+      background: linear-gradient(135deg, #cf8331, #fd6585);
+      color: white;
+      transition: 0.3s;
+    }
+
+    .top-card .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .menu-card {
+      background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-content {
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .modal-img {
+      width: 50%;
+      height: 1%;
+      border-radius: 12px;
+    }
+
+    .modal-description {
+      font-size: 1rem;
+      color: #463f3f;
+    }
+
+    .carousel-item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 6; /* Wide and short video */
+  overflow: hidden;
+}
+
+.carousel-item video {
+  position: absolute;
+  top: 0;
+  /* bottom: 100%; */
+  /* left: 50%; */
+  width: 50%;
+  height: 75%;
+  object-fit: cover;
+}
+@media (max-width: 768px) {
+  .carousel-item {
+    height: 40vh;
+  }
+}
+
+  </style>
+  <script src="footer.js"></script>
+</head>
+
+<body>
+
+  <!-- CAROUSEL -->
+ <div id="artCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <video src="Videos/slide1.mp4" class="d-block w-100 rounded" autoplay muted loop></video>
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Breeze of Memories</h5>
+          <p>By Aisha Khan</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <video src="Videos/slide2.mp4" class="d-block w-100 rounded" autoplay muted loop></video>
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Blooming Hues</h5>
+          <p>By Ravi Mehta</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <video src="Videos/slide3.mp4" class="d-block w-100 rounded" autoplay muted loop></video>
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Flickers of Inspiration</h5>
+          <p>By Lila Roy</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <video src="Videos/slide4.mp4" class="d-block w-100 rounded" autoplay muted loop></video>
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Whispers in Time</h5>
+          <p>By Karim Patel</p>
+        </div>
+      </div>
+    </div>
+
+    
+    <button class="carousel-control-prev" type="button" data-bs-target="#artCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#artCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div> 
+
+
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg" style="background-color: #d86774;">
+    <div class="container">
+      <a class="navbar-brand" href="#">Art Cafe</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="reserve.html">Reserve</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+          <li class="nav-item"><a class="nav-link" href="dashboard.html"><strong>Dashboard</strong></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- TOP SECTION -->
+  <section class="py-5 text-white" style="background: linear-gradient(135deg, #ff9a9e, #fad0c4);">
+    <div class="container">
+      <div class="row align-items-start">
+        <div class="col-md-6 mb-4">
+          <h1 class="display-4 animate__animated animate__fadeInLeft">Welcome to <br><strong>Art Cafe</strong></h1>
+          <p class="lead">Art, coffee, and conversation—a perfect blend for your senses.</p>
+        </div>
+        <div class="col-md-6 top-card">
+          <div class="row row-cols-2 g-4">
+            <div class="col">
+              <div class="card text-center h-100 animate__animated animate__zoomIn">
+                <div class="card-body">
+                  <h5 class="card-title">🎨 Art Gallery</h5>
+                  <a href="gallery.html" class="btn btn-light btn-sm mt-2">Explore</a>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card text-center h-100 animate__animated animate__zoomIn">
+                <div class="card-body">
+                  <h5 class="card-title">☕ Order from Café</h5>
+                  <a href="menu.html" class="btn btn-light btn-sm mt-2">Order</a>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card text-center h-100 animate__animated animate__zoomIn">
+                <div class="card-body">
+                  <h5 class="card-title">🍽️ Reserve Table</h5>
+                  <a href="reserve.html" class="btn btn-light btn-sm mt-2">Book Now</a>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card text-center h-100 animate__animated animate__zoomIn">
+                <div class="card-body">
+                  <h5 class="card-title">🎉 Upcoming Events</h5>
+                  <a href="events.html" class="btn btn-light btn-sm mt-2">See Events</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED + MENU SECTION -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row">
+        <!-- Featured Artworks -->
+        <div class="col-lg-8">
+          <h2 class="mb-4 animate__animated animate__fadeInDown">🎨 Featured Artworks</h2>
+          <div class="row g-4">
+            <!-- Example cards (unique) -->
+             <!-- card 01 -->
+            <div class="col-md-6">
+              <div class="card h-100 feature-card">
+                <div class="card-body">
+                  <h5 class="card-title">"Showcase of Excellence"</h5>
+                  <p class="card-text">by Nehra</p>
+                  <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#artModal" onclick="showArt('Images/art12.jpg', 'Showcase of Excellence', 'Where brushstrokes tell a thousand stories.')">View Details</button>
+                </div>
+              </div>
+            </div>
+ <!-- card 02 -->
+ <div class="col-md-6">
+  <div class="card h-100 feature-card">
+    <div class="card-body">
+      <h5 class="card-title">"Signature Strokes"</h5>
+      <p class="card-text">by Ankith Yadav</p>
+      <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#artModal" onclick="showArt('Images/art11.jpg', 'Signature Strokes', 'Where imagination takes shape.')">View Details</button>
+    </div>
+  </div>
+</div>
+            <!-- card 03 -->
+            <div class="col-md-6">
+              <div class="card h-100 feature-card">
+                <div class="card-body">
+                  <h5 class="card-title">"Premier Paintings"</h5>
+                  <p class="card-text">by Ananya Rathod</p>
+                  <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#artModal" onclick="showArt('Images/art5.jpg', 'Premier Paintings', 'Transforming blank spaces into wonders.')">View Details</button>
+                </div>
+              </div>
+            </div><!-- card 04 -->
+            <div class="col-md-6">
+              <div class="card h-100 feature-card">
+                <div class="card-body">
+                  <h5 class="card-title">"Art of Distinction"</h5>
+                  <p class="card-text">by Sangiyan</p>
+                  <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#artModal" onclick="showArt('Images/art6.jpg', 'Art of Distinction', 'An exploration of light, shadow, and emotion.')">View Details</button>
+                </div>
+              </div>
+            </div><!-- card 05 -->
+            <div class="col-md-6">
+              <div class="card h-100 feature-card">
+                <div class="card-body">
+                  <h5 class="card-title">"Exquisite Expressions"</h5>
+                  <p class="card-text">by Ramola</p>
+                  <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#artModal" onclick="showArt('Images/art9.jpg', 'Exquisite Expressions', 'Art that speaks to the heart.')">View Details</button>
+                </div>
+              </div>
+            </div>
+             <!-- card 06-->
+            <div class="col-md-6">
+              <div class="card h-100 feature-card">
+                <div class="card-body">
+                  <h5 class="card-title">"Curated Wonders"</h5>
+                  <p class="card-text">by Raj Malhotra</p>
+                  <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#artModal" onclick="showArt('Images/art4.jpg', 'Curated Wonders', 'The beauty of art captured in time.')">View Details</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Today’s Menu -->
+        <div class="col-lg-4">
+          <div class="menu-card p-4 mt-5 mt-lg-0" style="background: linear-gradient(135deg, #6a1b9a, #d81b60); border-radius: 15px;">
+            <h4 class="text-center mb-3 text-white">☕ Today’s Special Menu</h4>
+            <ul class="list-unstyled fs-6 text-white">
+              <li class="menu-item" style="background-color: #ba68c8; border-radius: 10px; margin: 10px 0; padding: 10px;"><strong>Espresso</strong> - ₹100</li>
+              <li class="menu-item" style="background-color: #ab47bc; border-radius: 10px; margin: 10px 0; padding: 10px;"><strong>Cappuccino</strong> - ₹120</li>
+              <li class="menu-item" style="background-color: #8e24aa; border-radius: 10px; margin: 10px 0; padding: 10px;"><strong>Cheese Sandwich</strong> - ₹90</li>
+              <li class="menu-item" style="background-color: #7b1fa2; border-radius: 10px; margin: 10px 0; padding: 10px;"><strong>Chocolate Muffin</strong> - ₹70</li>
+              <li class="menu-item" style="background-color: #6a1b9a; border-radius: 10px; margin: 10px 0; padding: 10px;"><strong>Blueberry Tart</strong> - ₹85</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL -->
+  <div class="modal fade" id="artModal" tabindex="-1" aria-labelledby="artModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content animate__animated animate__fadeInDown animate__faster">
+        <div class="modal-header">
+          <h5 class="modal-title" id="artTitle"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img id="artImg" class="modal-img mb-3" src="" alt="Artwork">
+          <p id="artDescription" class="modal-description"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function showArt(img, title, description) {
+      document.getElementById('artImg').src = img;
+      document.getElementById('artTitle').innerText = title;
+      document.getElementById('artDescription').innerText = description;
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <div id="footer-container"></div>
+</body>
+
+</html>

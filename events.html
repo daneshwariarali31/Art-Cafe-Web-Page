@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Art Events |Art Cafe </title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+      color: #333;
+      animation: fadeIn 1s ease-in;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 2rem;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .event {
+      background: #ffffffcc;
+      border-radius: 20px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .event:hover {
+      transform: translateY(-5px);
+    }
+
+    .event h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #6a11cb;
+    }
+
+    .event p {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 10px 20px;
+      background: linear-gradient(to right, #43e97b, #38f9d7);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: linear-gradient(to right, #f857a6, #ff5858);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="home-link">🎨 Upcoming Art Events</h1>
+
+    <div class="event">
+      <h2>🎤 Open Mic Poetry Night</h2>
+      <p>Date: April 28, 2025</p>
+      <p>Join local poets as they share their most passionate verses in an intimate café setting.</p>
+    </div>
+
+    <div class="event">
+      <h2>🎨 Live Canvas Painting</h2>
+      <p>Date: May 4, 2025</p>
+      <p>Watch live as artists transform blank canvases into masterpieces. Free drinks for attendees!</p>
+    </div>
+
+    <div class="event">
+      <h2>🖌️ Watercolor Workshop</h2>
+      <p>Date: May 10, 2025</p>
+      <p>Learn watercolor basics from pros. Materials provided. Spots are limited!</p>
+    </div>
+
+    <a class="back-btn" href="dashboard.html">← Back to Dashboard</a>
+  </div>
+
+  <script>
+    // Click on header goes to homepage
+    document.getElementById("home-link").addEventListener("click", function() {
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>

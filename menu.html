@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Menu | Art Cafe </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-XXXXXXX-X');
+  </script>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #fffde7, #ffe3e3);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .menu-card {
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .img-hover-zoom img {
+      transition: transform 0.4s ease;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+
+    .img-hover-zoom:hover img {
+      transform: scale(1.1);
+    }
+
+    .card-body {
+      background: #fff;
+      text-align: center;
+    }
+
+    .card-title {
+      color: #5e4b56;
+    }
+
+    .fw-bold {
+      color: #dc3545;
+    }
+
+    .cart-icon {
+      position: fixed;
+      top: 70px;
+      right: 9px;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: crimson;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 7px;
+      font-size: 14px;
+    }
+
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 350px;
+      height: 100%;
+      background: #fff;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      transition: right 0.3s ease;
+      z-index: 999;
+      overflow-y: auto;
+    }
+
+    .cart-sidebar.open {
+      right: 0;
+    }
+
+    .payment-section {
+      margin-top: 20px;
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .pay-btn {
+      margin-top: 10px;
+      width: 100%;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+  <script src="footer.js"></script>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Art Cafe</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link active" href="menu.html">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="reserve.html">Reserve</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Cart Icon -->
+  <div class="cart-icon" id="cartIcon">
+    🛒
+    <div class="cart-count" id="cartCount">0</div>
+  </div>
+
+ <!-- Cart Sidebar -->
+<div class="cart-sidebar" id="cartSidebar">
+  <h5>Your Cart</h5>
+  <div id="cartItems"></div>
+  <button class="buy-now-btn" onclick="showPaymentSection()">Buy Now</button>
+
+  <!-- Payment Section moved inside -->
+  <div class="payment-section" id="paymentSection" style="display: none;">
+    <h6>Select Payment Method</h6>
+    <label><input type="radio" name="payMethod" value="card"> Card</label>
+    <label><input type="radio" name="payMethod" value="upi"> UPI</label>
+    <label><input type="radio" name="payMethod" value="wallet"> Wallet</label>
+
+    <div class="payment-fields" id="paymentFields"></div>
+    <!-- ✅ Make sure your Pay button calls submitPayment() -->
+<button onclick="submitPayment()" class="btn btn-success w-100">Pay</button>
+
+  </div>
+</div>
+
+<!-- Menu Section -->
+<section class="py-5">
+  <div class="container gap1">
+    <h2 class="text-center mb-5">Our Special Menu</h2>
+    <div class="row g-4">
+
+
+
+      <!-- Menu Item 1 -->
+      <div class="col-md-4">
+        <div class="card art-card shadow-sm">
+          <img src="Images/coffee.jpg" class="card-img-top" alt="Brewed Bliss">
+          <div class="action-icons text-center py-2">
+            <button onclick="addToCart('Brewed Bliss', 120, 'Images/coffee.jpg')">🛒</button>
+            <button onclick="likeAction(this)">🤍</button>
+            <button
+              onclick="viewDetails('Brewed Bliss', 'A symphony of bold flavors, brewed to inspire every sip', 'Images/coffee.jpg', '120')">👁️</button>
+
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Signature Coffee</h5>
+            <p class="card-text text-muted">A symphony of bold flavors, brewed to inspire every sip.</p>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Item 2 -->
+      <div class="col-md-4">
+        <div class="card art-card shadow-sm">
+          <img src="Images/pastry.jpg" class="card-img-top" alt="Golden Layers">
+          <div class="action-icons text-center py-2">
+            <button onclick="addToCart('Golden Layers', 80, 'Images/pastry.jpg')">🛒</button>
+            <button onclick="likeAction(this)">🤍</button>
+            <button
+              onclick="viewDetails('Golden Layers', 'Soft, creamy and sinfully delicious', 'Images/pastry.jpg', '80')">👁️</button>
+
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Chocolate Pastry</h5>
+            <p class="card-text text-muted">Soft, creamy and sinfully delicious.</p>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Item 3 -->
+      <div class="col-md-4">
+        <div class="card art-card shadow-sm">
+          <img src="Images/sandwich.jpg" class="card-img-top" alt="Sculpted Sandwich">
+          <div class="action-icons text-center py-2">
+            <button onclick="addToCart('Sculpted Sandwich', 250, 'Images/sandwich.jpg')">🛒</button>
+            <button onclick="likeAction(this)">🤍</button>
+            <button
+              onclick="viewDetails('Sculpted Sandwich', 'Loaded with veggies & melted cheese', 'Images/sandwich.jpg', '250')">👁️</button>
+
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Grilled Sandwich</h5>
+            <p class="card-text text-muted">Loaded with veggies & melted cheese.</p>
+            
+          </div>
+        </div>
+      </div>
+
+       <!-- Menu Item 4-->
+       <div class="col-md-4">
+        <div class="card art-card shadow-sm">
+          <img src="Images/Salad.jpg" class="card-img-top" alt="Garden Symphony">
+          <div class="action-icons text-center py-2">
+            <button onclick="addToCart('Garden Symphony', 150, 'Images/Salad.jpg')">🛒</button>
+            <button onclick="likeAction(this)">🤍</button>
+            <button
+              onclick="viewDetails('Garden Symphony', 'A fresh burst of colors and textures—nature’s perfect palette', 'Images/Salad.jpg', '150')">👁️</button>
+
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Salad</h5>
+            <p class="card-text text-muted">A fresh burst of colors and textures—nature’s perfect palette.</p>
+            
+          </div>
+        </div>
+      </div>
+ <!-- Menu Item 5 -->
+ <div class="col-md-4">
+  <div class="card art-card shadow-sm">
+    <img src="Images/Chocolate Chip.jpg" class="card-img-top" alt="Sweet Strokes">
+    <div class="action-icons text-center py-2">
+      <button onclick="addToCart('Sweet Strokes', 80, 'Images/Chocolate Chip.jpg')">🛒</button>
+      <button onclick="likeAction(this)">🤍</button>
+      <button
+        onclick="viewDetails('Sweet Strokes', 'Where indulgence meets artistry—chocolate chip bliss in every bite', 'Images/Chocolate Chip.jpg', '200')">👁️</button>
+
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Muffin choco</h5>
+      <p class="card-text text-muted">Where indulgence meets artistry—chocolate chip bliss in every bite</p>
+      
+    </div>
+  </div>
+</div>
+
+ <!-- Menu Item 6 -->
+ <div class="col-md-4">
+  <div class="card art-card shadow-sm">
+    <img src="Images/Veg Loaded Pizzaa.jpg" class="card-img-top" alt="Veg Loaded Pizzaa">
+    <div class="action-icons text-center py-2">
+      <button onclick="addToCart('Slice of Art', 250, 'Images/Veg Loaded Pizzaa.jpg')">🛒</button>
+      <button onclick="likeAction(this)">🤍</button>
+      <button
+        onclick="viewDetails('Slice of Art', 'Every slice tells a story—where flavors meet creativity', 'Images/Veg Loaded Pizzaa.jpg', '250')">👁️</button>
+
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Veg Loaded Pizza</h5>
+      <p class="card-text text-muted">Every slice tells a story— where flavors meet creativity, come and lets have a Slice of Pizza</p>
+      
+    </div>
+  </div>
+</div>
+
+
+    </div>
+  </div>
+</section>
+
+  <!-- JavaScript -->
+  <script>
+    function updateCartSidebar() {
+      const cart = JSON.parse(localStorage.getItem('menuCart')) || [];
+      const cartItemsContainer = document.getElementById('cartItems');
+      const cartCount = document.getElementById('cartCount');
+  
+      cartItemsContainer.innerHTML = '';
+  
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+      } else {
+        cart.forEach((item, index) => {
+          const itemDiv = document.createElement('div');
+          itemDiv.classList.add('cart-item');
+          itemDiv.innerHTML = `
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div><strong>${item.title}</strong><br><small>₹${item.price}</small></div>
+              <button class="btn btn-sm btn-danger" onclick="removeCartItem(${index})">🗑️</button>
+            </div>`;
+          cartItemsContainer.appendChild(itemDiv);
+        });
+      }
+  
+      cartCount.textContent = cart.length;
+    }
+  
+    function removeCartItem(index) {
+      const cart = JSON.parse(localStorage.getItem('menuCart')) || [];
+      cart.splice(index, 1);
+      localStorage.setItem('menuCart', JSON.stringify(cart));
+      updateCartSidebar();
+    }
+  
+    function addToCart(title, price = 0, imgSrc = '') {
+      const cart = JSON.parse(localStorage.getItem('menuCart')) || [];
+      cart.push({ title, price, imgSrc });
+      localStorage.setItem('menuCart', JSON.stringify(cart));
+      updateCartSidebar();
+      
+    }
+  
+    function viewDetails(title, description, imgSrc, price) {
+      const modalBody = document.getElementById('modalBody');
+      const modalTitle = document.getElementById('detailsModalLabel');
+      modalTitle.textContent = title;
+      modalBody.innerHTML = `
+        <div class="text-center">
+          <img src="${imgSrc}" class="img-fluid rounded mb-3" alt="${title}" style="max-height: 250px;">
+          <h5>${title}</h5>
+          <p>${description}</p>
+          <p><strong>Price:</strong> ₹${price}</p>
+        </div>`;
+      new bootstrap.Modal(document.getElementById('detailsModal')).show();
+    }
+  
+    function likeAction(btn) {
+      btn.classList.toggle("liked");
+      btn.innerText = btn.classList.contains("liked") ? "❤️" : "🤍";
+    }
+  
+    function showPaymentSection() {
+      const cart = JSON.parse(localStorage.getItem('menuCart')) || [];
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+      document.getElementById("paymentSection").style.display = "block";
+    }
+  
+    function updatePaymentFields() {
+      const selected = document.querySelector('input[name="payMethod"]:checked')?.value;
+      const paymentFields = document.getElementById('paymentFields');
+      if (!selected || !paymentFields) return;
+  
+      if (selected === "card") {
+        paymentFields.innerHTML = `
+          <input type="text" placeholder="Card Number" />
+          <input type="text" placeholder="Expiry (MM/YY)" />
+          <input type="text" placeholder="CVV" />
+        `;
+      } else if (selected === "upi") {
+        paymentFields.innerHTML = `<input type="text" placeholder="UPI ID" />`;
+      } else if (selected === "wallet") {
+        paymentFields.innerHTML = `<input type="text" placeholder="Wallet Mobile Number" />`;
+      }
+    }
+  
+    function submitPayment() {
+      const selected = document.querySelector('input[name="payMethod"]:checked');
+      if (!selected) {
+        alert("Please select a payment method.");
+        return;
+      }
+  
+      // Simulate payment and redirect
+      alert("Payment successful via " + selected.value + "! 🎉");
+      localStorage.removeItem('menuCart');
+      updateCartSidebar();
+      window.location.href = "payment-successful.html";
+    }
+  
+    document.addEventListener("DOMContentLoaded", () => {
+      updateCartSidebar();
+      document.getElementById('cartIcon').addEventListener('click', () => {
+        document.getElementById('cartSidebar').classList.toggle('open');
+      });
+  
+      // Set up listener for payment method changes
+      const payMethodInputs = document.querySelectorAll('input[name="payMethod"]');
+      payMethodInputs.forEach(input => {
+        input.addEventListener('change', updatePaymentFields);
+      });
+    });
+  </script>
+  
+  <!-- View Details Modal -->
+  <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="detailsModalLabel">Item Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <div id="footer-container"></div>
+
+</body>
+
+</html>
